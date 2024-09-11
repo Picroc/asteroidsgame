@@ -1,4 +1,5 @@
 @tool
+class_name PolylineRenderer
 extends Node2D
 
 @export var use_circles := false
@@ -31,7 +32,8 @@ func _ready() -> void:
 	
 func _draw() -> void:
 	var color := Color.WHITE
-	var gray_color := Color.LIGHT_GRAY
+	var gray_color := Color.DARK_GRAY
+	gray_color.a = 0.7
 	
 	draw_polyline(shape, gray_color if use_circles else color, line_thickness)
 	

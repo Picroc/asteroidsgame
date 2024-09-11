@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf4mmo71dm27c"]
+[gd_scene load_steps=4 format=3 uid="uid://bf4mmo71dm27c"]
 
 [ext_resource type="PackedScene" uid="uid://bcg7y0tbdjyx3" path="res://scenes/ship.tscn" id="1_msxjc"]
+[ext_resource type="PackedScene" uid="uid://cnl4r253oct4d" path="res://scenes/asteroids.tscn" id="2_uk7yx"]
+[ext_resource type="PackedScene" uid="uid://bljdrhhdxfgg0" path="res://scenes/bullet.tscn" id="4_vxrj4"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -21,3 +23,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="Ship" parent="." instance=ExtResource("1_msxjc")]
 position = Vector2(580, 324)
+collision_layer = 2
+collision_mask = 3
+
+[node name="Asteroids" parent="." instance=ExtResource("2_uk7yx")]
+
+[node name="Bullet" parent="." instance=ExtResource("4_vxrj4")]

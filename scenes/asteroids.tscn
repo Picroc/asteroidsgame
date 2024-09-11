@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnl4r253oct4d"]
+
+[ext_resource type="Script" path="res://scenes/asteroids.gd" id="1_wxceb"]
+[ext_resource type="Script" path="res://scenes/asteroid_spawner.gd" id="2_ogrot"]
+
+[node name="Asteroids" type="Node2D"]
+script = ExtResource("1_wxceb")
+
+[node name="AsteroidSpawner" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_ogrot")
+screen_spawn_offset = 100.0
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true

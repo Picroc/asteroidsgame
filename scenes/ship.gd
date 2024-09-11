@@ -1,12 +1,15 @@
-extends Node2D
+extends Area2D
 
 @export var max_velocity := 500.0
 @export var acceleration_factor := 100.0
 @export var angular_speed := 2.0
 @export var dampening_factor := 5.0
+@export var bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
 
 @onready var flame_renderer: Node2D = %FlameRenderer
 @onready var flame_animation_timer: Timer = %FlameAnimationTimer
+@onready var cannon: Marker2D = %Cannon
+@onready var cannon_cooloff: Timer = %CannonCooloff
 
 var velocity := Vector2.ZERO
 
@@ -21,6 +24,9 @@ func _process(delta: float) -> void:
 	
 	var rotation_input := Input.get_axis("yaw_left", "yaw_right")
 	var angular_velocity := angular_speed * delta * rotation_input
+	
+	if Input.is_action_pressed("shoot"):
+		shoot()
 	
 	rotate(angular_velocity * (PI / 180.0))
 	
@@ -56,3 +62,11 @@ func set_flame_animation(visible: bool) -> void:
 	else:
 		flame_animation_timer.stop()
 		flame_renderer.visible = false
+		
+func shoot() -> void:
+	if cannon_cooloff.is_stopped():
+		cannon_cooloff.start()
+		var bullet := bullet_scene.instantiate()
+		bullet.position = cannon.global_position
+		bullet.rotation = rotation
+		add_sibling(bullet)
