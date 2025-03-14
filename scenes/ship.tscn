@@ -1,14 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcg7y0tbdjyx3"]
 
-[ext_resource type="Script" path="res://scenes/ship.gd" id="1_lkpxl"]
-[ext_resource type="Script" path="res://scenes/polyline_renderer.gd" id="2_46c0m"]
+[ext_resource type="Script" uid="uid://1hgg312x6xeb" path="res://scenes/ship.gd" id="1_lkpxl"]
+[ext_resource type="Script" uid="uid://drm8s22rj40je" path="res://scenes/polyline_renderer.gd" id="2_46c0m"]
 
 [node name="Ship" type="Area2D"]
+collision_mask = 4
 script = ExtResource("1_lkpxl")
 angular_speed = 150.0
 metadata/_edit_group_ = true
 
 [node name="ShipRender" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_46c0m")
 coords = [[0.0, 0.0], [10.0, 30.0], [5.0, 25.0], [-5.0, 25.0], [-10.0, 30.0], [0.0, 0.0]]
 line_thickness = 2.0
@@ -24,6 +26,7 @@ unique_name_in_owner = true
 wait_time = 0.1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+unique_name_in_owner = true
 polygon = PackedVector2Array(-10, 14, 0, -17, 10, 14)
 
 [node name="Cannon" type="Marker2D" parent="."]

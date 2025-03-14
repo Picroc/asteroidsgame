@@ -3,48 +3,9 @@ extends Node2D
 
 @export var screen_spawn_offset := -100.0
 @export var random_spawn_angle := 90.0
-
-var type_1_asteroid_base_coords := [
-	[-10, 0],
-	[10, 0],
-	[10, 10],
-	[20, 10],
-	[20, 30],
-	[10, 30],
-	[10, 40],
-	[-10, 40],
-	[-10, 30],
-	[-20, 30],
-	[-20, 10],
-	[-10, 10],
-	[-10, 0]
-];
-
-func generate_asteroid(base: Array, scale = 1.0) -> PackedVector2Array:
-	var final_asteroid: PackedVector2Array = []
 	
-	final_asteroid.append(Vector2(
-		base[0][0] * scale,
-		base[0][1] * scale
-	))
-	
-	for coord in base.slice(1, base.size() - 1):
-		final_asteroid.append(Vector2(
-			(coord[0] + randf_range(-3.0, 3.0)) * scale,
-			(coord[1] + randf_range(-3.0, 3.0)) * scale
-	))
-	
-	final_asteroid.append(Vector2(
-		base[0][0] * scale,
-		base[0][1] * scale
-	))
-	
-	return final_asteroid
-	
-func spawn_asteroids(number: int, scale: float) -> void:
+func spawn_asteroids(number: int, type: int) -> void:
 	for i in range(number):
-		var coords := generate_asteroid(type_1_asteroid_base_coords, scale)
-		
 		var screen_size := get_viewport_rect().size
 		var screen_center := screen_size / 2.0
 		
@@ -66,7 +27,7 @@ func spawn_asteroids(number: int, scale: float) -> void:
 		
 		var random_pos_vector: Vector2 = spawn_edges[rand_index] + screen_size * inversed_mask[rand_index] * Vector2(randf(),randf())
 		
-		var asteroid := Asteroid.new(coords)
+		var asteroid := Asteroid.new(randi_range(1,3))
 		
 		asteroid.global_position = random_pos_vector
 		asteroid.look_at(screen_center)
@@ -75,10 +36,10 @@ func spawn_asteroids(number: int, scale: float) -> void:
 		asteroid.rotate(PI / 2.0)
 		asteroid.rotate(randf_range(-(random_angle_rad / 2.0), random_angle_rad / 2.0))
 		
-		add_sibling(asteroid)
+		add_child(asteroid)
 		
 		var test_rect := ColorRect.new()
 		test_rect.size = Vector2(2, 2)
 		test_rect.global_position = random_pos_vector
 		
-		add_sibling(test_rect)
+		add_child(test_rect)

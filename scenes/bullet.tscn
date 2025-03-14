@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bljdrhhdxfgg0"]
 
-[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_qdwmy"]
+[ext_resource type="Script" uid="uid://dnqu2r4dmy6xj" path="res://scenes/bullet.gd" id="1_qdwmy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5y7qk"]
 size = Vector2(5, 5)
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 6
 script = ExtResource("1_qdwmy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
