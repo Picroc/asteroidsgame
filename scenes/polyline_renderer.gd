@@ -32,11 +32,11 @@ func _ready() -> void:
 	
 func _draw() -> void:
 	var color := Color.WHITE
-	var gray_color := Color.DARK_GRAY
+	var gray_color := Color.WHITE
 	gray_color.a = 0.7
 	
 	draw_polyline(shape, gray_color if use_circles else color, line_thickness)
 	
 	if use_circles:
 		for point: Vector2 in shape.slice(0, shape.size() - 1):
-			draw_circle(point, line_thickness + 0.5, color)
+			draw_circle(point, line_thickness - 0.5, color)

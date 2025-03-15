@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmxf1terkee43"]
+
+[ext_resource type="Script" uid="uid://do1el6njy4wrv" path="res://scenes/info_area.gd" id="1_bt6xo"]
+
+[node name="InfoArea" type="Node2D"]
+script = ExtResource("1_bt6xo")
+score = 9
+
+[node name="ScoreNumber1" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(10, 20)
+
+[node name="ScoreNumber2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(35, 20)
+
+[node name="ScoreNumber3" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(60, 20)
+
+[node name="ScoreNumber4" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(85, 20)

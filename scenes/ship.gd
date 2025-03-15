@@ -1,6 +1,7 @@
 extends Area2D
 
 signal was_destroyed
+signal scored_point
 
 @export var max_velocity := 500.0
 @export var acceleration_factor := 100.0
@@ -78,6 +79,8 @@ func shoot() -> void:
 		var bullet := bullet_scene.instantiate()
 		bullet.position = cannon.global_position
 		bullet.rotation = rotation
+		bullet.scored.connect(scored_point.emit)
+		
 		add_sibling(bullet)
 		
 func _on_collision(body) -> void:

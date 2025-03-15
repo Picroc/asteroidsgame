@@ -4,16 +4,16 @@ extends Node2D
 var type_1_asteroid_base_coords := [
 	[-10, 0],
 	[10, 0],
-	[10, 10],
+	[15, 3],
 	[20, 10],
 	[20, 30],
-	[10, 30],
+	[15, 37],
 	[10, 40],
 	[-10, 40],
-	[-10, 30],
+	[-15, 37],
 	[-20, 30],
 	[-20, 10],
-	[-10, 10],
+	[-15, 3],
 	[-10, 0]
 ];
 
@@ -21,17 +21,17 @@ var asteroid_types := {
 	1: {
 		"shape": type_1_asteroid_base_coords,
 		"segments": 1,
-		"scale": 1.0
+		"scale": 0.5
 	},
 	2: {
 		"shape": type_1_asteroid_base_coords,
 		"segments": 2,
-		"scale": 1.5
+		"scale": 1.0
 	},
 	3: {
 		"shape": type_1_asteroid_base_coords,
 		"segments": 3,
-		"scale": 2.0
+		"scale": 1.5
 	}
 };
 
